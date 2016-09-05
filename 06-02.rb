@@ -83,6 +83,3 @@ remote.set_command(light_on, light_off)
 
 remote.on_button_was_pushed(0)
 remote.off_button_was_pushed(0)
-
-
-
