@@ -1,4 +1,4 @@
 # head-first-design-patterns
 
-http://www.headfirstlabs.com/books/hfdp/
-Code example for the book, "Head First Design Patterns" 
+
+Code example for the book, "[Head First Design Patterns](http://www.headfirstlabs.com/books/hfdp/ "Head First Design Patterns")"
