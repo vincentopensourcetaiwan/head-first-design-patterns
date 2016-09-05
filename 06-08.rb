@@ -221,31 +221,9 @@ living_room_light = Light.new("living room")
 living_room_light_on = LightOnCommand.new(living_room_light)
 living_room_light_off = LightOffCommand.new(living_room_light)
 
-kitchen_light = Light.new("kitchen")
-kitchen_light_on = LightOnCommand.new(kitchen_light)
-kitchen_light_off = LightOffCommand.new(kitchen_light)
-
-living_room_stereo = Stereo.new("living room")
-living_room_stereo_on = StereoOnWithCDCommand.new(living_room_stereo)
-living_room_stereo_off = StereotOffCommand.new(living_room_stereo)
-
-living_room_ceiling_fan = CeilingFan.new("living room")
-living_room_ceiling_fan_on = CeilingFanOnCommand.new(living_room_ceiling_fan)
-living_room_ceiling_fan_off = CeilingFanOffCommand.new(living_room_ceiling_fan)
-
 remote = RemoteControl.new
 remote.set_command(living_room_light_on, living_room_light_off)
-remote.set_command(kitchen_light_on, kitchen_light_off)
-remote.set_command(living_room_stereo_on, living_room_stereo_off)
-remote.set_command(living_room_ceiling_fan_on, living_room_ceiling_fan_off)
 
 remote.on_button_was_pushed(0)
 remote.off_button_was_pushed(0)
 remote.undo_button_was_pushed
-
-remote.on_button_was_pushed(1)
-remote.off_button_was_pushed(1)
-remote.on_button_was_pushed(2)
-remote.off_button_was_pushed(2)
-remote.on_button_was_pushed(3)
-remote.off_button_was_pushed(3)
