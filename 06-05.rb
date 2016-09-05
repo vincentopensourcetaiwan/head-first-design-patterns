@@ -132,13 +132,19 @@ class RemoteControl
   end
 end
 
-
 living_room_light = Light.new("living room")
 living_room_light_on = LightOnCommand.new(living_room_light)
 living_room_light_off = LightOffCommand.new(living_room_light)
 
+kitchen_light = Light.new("kitchen")
+kitchen_light_on = LightOnCommand.new(kitchen_light)
+kitchen_light_off = LightOffCommand.new(kitchen_light)
+
 remote = RemoteControl.new
 remote.set_command(living_room_light_on, living_room_light_off)
+remote.set_command(kitchen_light_on, kitchen_light_off)
 
 remote.on_button_was_pushed(0)
 remote.off_button_was_pushed(0)
+remote.on_button_was_pushed(1)
+remote.off_button_was_pushed(1)
