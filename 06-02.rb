@@ -39,6 +39,58 @@ class LightOffCommand < Command
   end
 end
 
+class Stereo
+  def on
+    puts "stereo is on"
+  end
+
+  def off
+    puts "stereo is off"
+  end
+
+  def set_cd
+    puts "stereo is set for CD input"
+  end
+
+  def set_dvd
+    puts "stereo is set for DVD input"
+  end
+
+  def set_radio
+    puts "stereo is set for Radio"
+  end
+
+  def set_volume(volume)
+    puts "Stereo volume set to #{volume}"
+  end
+end
+
+class StereoOnWithCDCommand < Command
+  attr_reader :stereo
+
+  def initialize(stereo)
+    @stereo = stereo
+  end
+
+  def execute
+    @stereo.on
+    @stereo.set_cd
+    @stereo.set_volume(11)
+  end
+end
+
+class StereotOffCommand < Command
+  attr_reader :stereo
+
+  def initialize(stereo)
+    @stereo = stereo
+  end
+
+  def execute
+    @stereo.off
+  end
+end
+
 class SimpleRemoteControl
   attr_reader :slot
 
@@ -77,6 +129,7 @@ end
 light = Light.new
 light_on = LightOnCommand.new(light)
 light_off = LightOffCommand.new(light)
+
 remote = RemoteControl.new
 remote.set_command(light_on, light_off)
 remote.on_button_was_pushed(0)
