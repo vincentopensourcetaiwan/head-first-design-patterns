@@ -6,12 +6,18 @@ class Command
 end
 
 class Light
+  attr_reader :location
+
+  def initialize(location)
+    @location = location
+  end
+
   def on
-    puts "light is on"
+    puts "#{@location} light is on"
   end
 
   def off
-    puts "light is off"
+    puts "#{@location} light is off"
   end
 end
 
@@ -126,19 +132,13 @@ class RemoteControl
   end
 end
 
-light = Light.new
-light_on = LightOnCommand.new(light)
-light_off = LightOffCommand.new(light)
 
-stereo = Stereo.new
-stereo_on_with_cd = StereoOnWithCDCommand.new(stereo)
-stereo_off = StereotOffCommand.new(stereo)
+living_room_light = Light.new("living_room")
+living_room_light_on = LightOnCommand.new(living_room_light)
+living_room_light_off = LightOffCommand.new(living_room_light)
 
 remote = RemoteControl.new
-remote.set_command(light_on, light_off)
-remote.set_command(stereo_on_with_cd, stereo_off)
+remote.set_command(living_room_light_on, living_room_light_off)
 
 remote.on_button_was_pushed(0)
 remote.off_button_was_pushed(0)
-remote.on_button_was_pushed(1)
-remote.off_button_was_pushed(1)
