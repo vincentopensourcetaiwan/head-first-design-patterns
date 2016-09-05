@@ -72,16 +72,15 @@ class RemoteControl
   def off_button_was_pushed(index)
     @off_commands[index].execute
   end
-
 end
 
 light = Light.new
 light_on = LightOnCommand.new(light)
 light_off = LightOffCommand.new(light)
-
-
 remote = RemoteControl.new
 remote.set_command(light_on, light_off)
 remote.on_button_was_pushed(0)
 remote.off_button_was_pushed(0)
+
+
 
