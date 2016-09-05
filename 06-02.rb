@@ -130,10 +130,18 @@ light = Light.new
 light_on = LightOnCommand.new(light)
 light_off = LightOffCommand.new(light)
 
+stereo = Stereo.new
+stereo_on_with_cd = StereoOnWithCDCommand.new(stereo)
+stereo_off = StereotOffCommand.new(stereo)
+
 remote = RemoteControl.new
 remote.set_command(light_on, light_off)
+remote.set_command(stereo_on_with_cd, stereo_off)
+
 remote.on_button_was_pushed(0)
 remote.off_button_was_pushed(0)
+remote.on_button_was_pushed(1)
+remote.off_button_was_pushed(1)
 
 
 
