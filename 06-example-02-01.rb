@@ -7,21 +7,21 @@ class Command
   end
 end
 
-class Car
+class Castle
   def assemble
-    puts "assemble a lego car"
+    puts "assemble a lego castle"
   end
 end
 
-class AssembleLegoCarCommand < Command
-  attr_reader :car
+class AssembleLegoCastleCommand < Command
+  attr_reader :castle
 
-  def initialize(car)
-    @car = car
+  def initialize(castle)
+    @castle = castle
   end
 
   def execute
-    @car.assemble
+    @castle.assemble
   end
 end
 
@@ -37,8 +37,8 @@ class Menu
   end
 end
 
-car = Car.new
-assemble_lego_car_command = AssembleLegoCarCommand.new(car)
-menu = Menu.new(assemble_lego_car_command)
+castle = Castle.new
+assemble_lego_castle_command = AssembleLegoCastleCommand.new(castle)
+menu = Menu.new(assemble_lego_castle_command)
 menu.button_was_pressed
 

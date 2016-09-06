@@ -7,37 +7,37 @@ class Command
   end
 end
 
-class Car
+class Castle
   def assemble
-    puts "assemble a lego car"
+    puts "assemble a lego castle"
   end
 
   def dismantle
-    puts "dismantle the lego car"
+    puts "dismantle the lego castle"
   end
 end
 
-class AssembleLegoCarCommand < Command
-  attr_reader :car
+class AssembleLegoCastleCommand < Command
+  attr_reader :castle
 
-  def initialize(car)
-    @car = car
+  def initialize(castle)
+    @castle = castle
   end
 
   def execute
-    @car.assemble
+    @castle.assemble
   end
 end
 
-class DismantleLegoCarCommand < Command
-  attr_reader :car
+class DismantleLegoCastleCommand < Command
+  attr_reader :castle
 
-  def initialize(car)
-    @car = car
+  def initialize(castle)
+    @castle = castle
   end
 
   def execute
-    @car.dismantle
+    @castle.dismantle
   end
 end
 
@@ -64,12 +64,12 @@ class Menu
   end
 end
 
-car = Car.new
-assemble_lego_car_command = AssembleLegoCarCommand.new(car)
-dismantle_lego_car_command = DismantleLegoCarCommand.new(car)
+castle = Castle.new
+assemble_lego_castle_command = AssembleLegoCastleCommand.new(castle)
+dismantle_lego_castle_command = DismantleLegoCastleCommand.new(castle)
 
 menu = Menu.new
-menu.set_command(assemble_lego_car_command, dismantle_lego_car_command)
+menu.set_command(assemble_lego_castle_command, dismantle_lego_castle_command)
 menu.order_button_was_pressed(0)
 menu.camcel_button_was_pressed(0)
 
