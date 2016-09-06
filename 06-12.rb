@@ -466,8 +466,8 @@ end
 timer = Timer.new
 stereo = Stereo.new("bedroom")
 
-timer_on_with_morning_call_command = TimerOnWithMorningCallCommand.new(timer)
-timer_off_command = TimerOffCommand.new(timer)
+timer_on = TimerOnWithMorningCallCommand.new(timer)
+timer_off = TimerOffCommand.new(timer)
 
 stereo_on = StereoOnWithCDCommand.new(stereo)
 stereo_off = StereotOffCommand.new(stereo)
@@ -475,10 +475,10 @@ stereo_off = StereotOffCommand.new(stereo)
 morning_call_on = Array.new
 morning_call_off = Array.new
 
-morning_call_on << timer_on_with_morning_call_command
+morning_call_on << timer_on
 morning_call_on << stereo_on
 
-morning_call_off << timer_off_command
+morning_call_off << timer_off
 morning_call_off << stereo_off
 
 morning_call_on_macro = MacroCommand.new(morning_call_on)

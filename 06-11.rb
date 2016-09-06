@@ -447,10 +447,10 @@ class TimerOffCommand < Command
 end
 
 timer = Timer.new
-timer_on_command = TimerOnCommand.new(timer)
-timer_off_command = TimerOffCommand.new(timer)
+timer_on = TimerOnCommand.new(timer)
+timer_off = TimerOffCommand.new(timer)
 remote = RemoteControl.new
-remote.set_command(timer_on_command, timer_off_command)
+remote.set_command(timer_on, timer_off)
 remote.on_button_was_pushed(0)
 remote.off_button_was_pushed(0)
 remote.undo_button_was_pushed
