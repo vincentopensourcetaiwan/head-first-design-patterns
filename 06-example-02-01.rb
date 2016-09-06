@@ -1,44 +1,44 @@
 # lego shop
 # customer order a lego car
 
-class Order
-  def car
+class Command
+  def execute
     raise NotImplementedError
   end
 end
 
-class Worker
-  def car
-    puts "make a lego car"
+class Car
+  def assemble
+    puts "assemble a lego car"
   end
 end
 
-class Salesclerk
-  attr_reader :worker
+class AssembleLegoCarCommand < Command
+  attr_reader :car
 
-  def initialize(worker)
-    @worker = worker
+  def initialize(car)
+    @car = car
   end
 
-  def place_order
-    @worker.car
+  def execute
+    @car.assemble
   end
 end
 
 class Customer
-  attr_reader :salesclerk
+  attr_reader :button
 
-  def initialize(salesclerk)
-    @salesclerk = salesclerk
+  def initialize(button)
+    @button = button
   end
 
-  def order_a_car
-    @salesclerk.place_order
+  def button_was_pressed
+    @button.execute
   end
 end
 
-worker = Worker.new
-salesclerk = Salesclerk.new(worker)
-customer = Customer.new(salesclerk)
-customer.order_a_car
+car = Car.new
+assemble_lego_car_command = AssembleLegoCarCommand.new(car)
+customer = Customer.new(assemble_lego_car_command)
+customer.button_was_pressed
 
