@@ -395,129 +395,67 @@ class HottubOffCommand < Command
   end
 end
 
-class RadioAlarm
-  attr_reader :alarm
+class Timer
   attr_reader :time
-  attr_reader :channel
 
   def on
-    puts "radio alarm is on"
+    puts "Timer is on"
   end
 
   def off
-    puts "radio alarm is off"
-  end
-
-  def set_alarm(alarm)
-    @alarm = alarm
-    puts "alarm of radio alarm is set to #{@alarm}"
+    puts "Timer is off"
   end
 
   def set_time(time)
     @time = time
-    puts "radio alarm time is set to #{@time}"
-  end
-
-  def set_channel(channel)
-    @channel = channel
-    puts "radio alarm channel is set to #{@channel}"
+    puts "Timer is set to #{@time}"
   end
 end
 
-class RadioAlarmOnCommand < Command
-  attr_reader :radio_alarm
+class TimerOnCommand < Command
+  attr_reader :timer
 
-  def initialize(radio_alarm)
-    @radio_alarm = radio_alarm
+  def initialize(timer)
+    @timer = timer
   end
 
   def execute
-    @radio_alarm.on
-    @radio_alarm.set_alarm(false)
-    @radio_alarm.set_time("00:00")
-    @radio_alarm.set_channel("99.7")
+    @timer.on
+    @timer.set_time("00:00")
   end
 
   def undo
-    @radio_alarm.off
+    @timer.off
   end
 end
 
-class RadioAlarmOffCommand < Command
-  attr_reader :radio_alarm
-  attr_reader :prev_alarm
-  attr_reader :prev_time
-  attr_reader :prev_channel
+class TimerOffCommand < Command
+  attr_reader :timer
 
-  def initialize(radio_alarm)
-    @radio_alarm = radio_alarm
+  def initialize(timer)
+    @timer = timer
   end
 
   def execute
-    @prev_alarm = @radio_alarm.alarm
-    @prev_time = @radio_alarm.time
-    @prev_channel = @radio_alarm.channel
-    @radio_alarm.off
+    @timer.off
+    @timer.set_time("00:00")
   end
 
   def undo
-    @radio_alarm.on
-    @radio_alarm.set_alarm(@prev_alarm)
-    @radio_alarm.set_time(@prev_time)
-    @radio_alarm.set_channel(@prev_channel)
+    @timer.on
+    @timer.set_time("00:00")
   end
 end
 
-
-radio_alarm = RadioAlarm.new
-radio_alarm_on_command = RadioAlarmOnCommand.new(radio_alarm)
-radio_alarm_off_command = RadioAlarmOffCommand.new(radio_alarm)
+timer = Timer.new
+timer_on_command = TimerOnCommand.new(timer)
+timer_off_command = TimerOffCommand.new(timer)
 remote = RemoteControl.new
-remote.set_command(radio_alarm_on_command, radio_alarm_off_command)
+remote.set_command(timer_on_command, timer_off_command)
 remote.on_button_was_pushed(0)
 remote.off_button_was_pushed(0)
 remote.undo_button_was_pushed
 
 
-# light = Light.new("living room")
-# tv = TV.new("living room")
-# stereo = Stereo.new("living room")
-# hottub = Hottub.new
-#
-# light_on = LightOnCommand.new(light)
-# light_off = LightOffCommand.new(light)
-#
-# tv_on = TVOnCommand.new(tv)
-# tv_off = TVOffCommand.new(tv)
-#
-# stereo_on = StereoOnWithCDCommand.new(stereo)
-# stereo_off = StereotOffCommand.new(stereo)
-#
-# hottub_on = HottubOnCommand.new(hottub)
-# hottub_off = HottubOffCommand.new(hottub)
-#
-# party_on = Array.new
-# party_off = Array.new
-#
-# party_on << light_on
-# party_on << tv_on
-# party_on << stereo_on
-# party_on << hottub_on
-#
-# party_off << light_off
-# party_off << tv_off
-# party_off << stereo_off
-# party_off << hottub_off
-#
-# party_on_macro = MacroCommand.new(party_on)
-# party_off_macro = MacroCommand.new(party_off)
-#
-# remote = RemoteControl.new
-# remote.set_command(party_on_macro, party_off_macro)
-#
-# remote.on_button_was_pushed(0)
-# remote.off_button_was_pushed(0)
-#
-#
 
 
