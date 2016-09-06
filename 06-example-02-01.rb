@@ -25,20 +25,20 @@ class AssembleLegoCarCommand < Command
   end
 end
 
-class Customer
-  attr_reader :button
+class Menu
+  attr_reader :slot
 
-  def initialize(button)
-    @button = button
+  def initialize(slot)
+    @slot = slot
   end
 
   def button_was_pressed
-    @button.execute
+    @slot.execute
   end
 end
 
 car = Car.new
 assemble_lego_car_command = AssembleLegoCarCommand.new(car)
-customer = Customer.new(assemble_lego_car_command)
-customer.button_was_pressed
+menu = Menu.new(assemble_lego_car_command)
+menu.button_was_pressed
 
