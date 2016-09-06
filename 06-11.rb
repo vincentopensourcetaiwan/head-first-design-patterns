@@ -409,15 +409,18 @@ class RadioAlarm
   end
 
   def set_alarm(alarm)
-    puts "alarm of radio alarm is set to #{alarm}"
+    @alarm = alarm
+    puts "alarm of radio alarm is set to #{@alarm}"
   end
 
   def set_time(time)
-    puts "radio alarm time is set to #{time}"
+    @time = time
+    puts "radio alarm time is set to #{@time}"
   end
 
   def set_channel(channel)
-    puts "radio alarm channel is set to #{channel}"
+    @channel = channel
+    puts "radio alarm channel is set to #{@channel}"
   end
 end
 
