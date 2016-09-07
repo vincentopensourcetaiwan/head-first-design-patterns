@@ -1,8 +1,8 @@
 # customer order a meal
-# a meal include a buger and a drink
+# a meal include a burger and a drink
 
 class Order
-  def buger
+  def burger
     raise NotImplementedError
   end
 
@@ -16,8 +16,8 @@ class Order
 end
 
 class Cook
-  def buger
-    puts "make a buger"
+  def burger
+    puts "make a burger"
   end
 
   def drink
@@ -25,7 +25,7 @@ class Cook
   end
 
   def meal
-    puts "make a buger"
+    puts "make a burger"
     puts "make a drink"
   end
 end
@@ -37,8 +37,8 @@ class Waitress < Order
     @cook = cook
   end
 
-  def place_a_buger_order
-    @cook.buger
+  def place_a_burger_order
+    @cook.burger
   end
 
   def place_a_drink_order
@@ -57,8 +57,8 @@ class Customer
     @waitress = waitress
   end
 
-  def order_a_buger
-    @waitress.place_a_buger_order
+  def order_a_burger
+    @waitress.place_a_burger_order
   end
 
   def order_a_drink

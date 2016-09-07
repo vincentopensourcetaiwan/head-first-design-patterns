@@ -1,13 +1,13 @@
-# customer order a buger
+# customer order a burger
 
 class Order
-  def buger
+  def burger
     raise NotImplementedError
   end
 end
 
 class Cook
-  def buger
+  def burger
     puts "make a buger"
   end
 end
@@ -20,7 +20,7 @@ class Waitress < Order
   end
 
   def place_order
-    @cook.buger
+    @cook.burger
   end
 end
 
@@ -31,7 +31,7 @@ class Customer
     @waitress = waitress
   end
 
-  def order_a_buger
+  def order_a_burger
     @waitress.place_order
   end
 end
@@ -39,4 +39,4 @@ end
 cook = Cook.new
 waitress = Waitress.new(cook)
 customer = Customer.new(waitress)
-customer.order_a_buger
+customer.order_a_burger
