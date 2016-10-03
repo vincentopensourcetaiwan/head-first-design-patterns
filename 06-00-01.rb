@@ -6,13 +6,13 @@ class Order
   end
 end
 
-class Cook
+class Cook < Order
   def burger
     puts "make a buger"
   end
 end
 
-class Waitress < Order
+class Waitress
   attr_reader :cook
 
   def initialize(cook)
